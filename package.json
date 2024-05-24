@@ -1,0 +1,15 @@
+{
+  "name": "wpr381-assignment_1",
+  "version": "1.0.0",
+  "description": "This program interacts with the Twitter, Spotify, and OMDb APIs to fetch and display data. It retrieves the latest tweets from a specified user, music details from Spotify, and movie information from OMDb. Additionally, it reads commands from a file and executes API requests accordingly.",
+  "main": "Node.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NadrianPotonas/WPR381-Assignment_1.git"
+  },
+  "author": "Nadrian Potonas",
+  "license": "ISC"
+}
