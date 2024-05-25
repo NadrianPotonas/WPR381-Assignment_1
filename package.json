@@ -11,5 +11,8 @@
     "url": "https://github.com/NadrianPotonas/WPR381-Assignment_1.git"
   },
   "author": "Nadrian Potonas",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
 }
