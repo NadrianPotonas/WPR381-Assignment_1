@@ -11,10 +11,6 @@ const ByTitle = (movieTitle) => {
             if (err) {
                 return reject('Error: ' + err);
             }
-            if (res.body.title == undefined) {
-                res.statusCode = 404
-                return reject('Movie Not Found: ' + res.statusCode);
-            }
             if (res.statusCode !== 200) {
                 return reject('Failed to fetch data: ' + res.statusCode);
             }
@@ -29,6 +25,12 @@ const ByTitle = (movieTitle) => {
                 actors: body.Actors,
                 plot: body.Plot,
             };
+
+            if (movieData.title == undefined) {
+                res.statusCode = 404
+                return reject('Movie Not Found: ' + res.statusCode);
+            }
+
             resolve(movieData);
         });
     });
