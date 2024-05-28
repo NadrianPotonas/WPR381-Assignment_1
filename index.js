@@ -12,7 +12,7 @@ const rl = readline.createInterface({
 
 let option = 0;
 DisplayMenue = () => {
-    rl.question("---Movie Search--- [Select an Option by typing the corresponding option number]\n1)\tSearch by Title\n2)\tLoad File Query\n3)\tExit\nOption: ", function(ans) {
+    rl.question("---Movie Search--- [Select an Option by typing the corresponding option number]\n1)\tSearch by Title\n2)\tLoad File Query\n3)\tValidate Text File\n4)\tExit\nOption: ", function(ans) {
         try{
             option = parseInt(ans)
         }catch{
@@ -43,10 +43,30 @@ DisplayMenue = () => {
                     console.log("Loading...")
                     let n = file.getNLines(fileDirectory)
                     for (let i = 0; i < n; i++) {
-                        let m = file.readNObject(fileDirectory, 0)
+                        let m = file.readNObject(fileDirectory, i)
                         SearchForMovie.ByTitle(m.Name)
                             .then(movieData => {
                                     console.log(movieData);
+                                })
+                            .catch(error => {
+                                    console.error(error);
+                                });
+                    }
+                });
+                break;
+            case 3:
+                rl.question("Please give the directory of the file\nFile Directory: ", function(fileDirectory){
+                    console.log("Loading...")
+                    let n = file.getNLines(fileDirectory)
+                    for (let i = 0; i < n; i++) {
+                        let m = file.readNObject(fileDirectory, i)
+                        SearchForMovie.ByTitle(m.Name)
+                            .then(movieData => {
+                                    if(movieData.year == m.Year && movieData.director == m.Director){
+                                        console.log(`The Movie: ${m.Name} at index ${i} is Correct`)
+                                    }else{
+                                        console.log(`The Movie: ${m.Name} at index ${i} is not entirely correct`)
+                                    }
                                 })
                             .catch(error => {
                                     console.error(error);
@@ -54,7 +74,7 @@ DisplayMenue = () => {
                     }
                 });
                 break
-            case 3:
+            case 4:
                 rl.close();
                 break
             default:

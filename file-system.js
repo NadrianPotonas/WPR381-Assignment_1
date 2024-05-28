@@ -10,8 +10,8 @@ readNObject = (dir, n) => {
     }
     try{
         let objectStrings = data.split("\n")
-        let properties = objectStrings[0].split(",")
-        res = {"Name": properties[0]}
+        let properties = objectStrings[n].split(",")
+        res = {"Name": properties[0], "Year": properties[1], "Director": properties[2]}
     }catch{
         console.log("The data in the text file is not in the right format")
     }
